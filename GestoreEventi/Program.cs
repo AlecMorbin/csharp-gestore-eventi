@@ -1,5 +1,5 @@
 ﻿using GestoreEventi;
-
+/*
 Console.WriteLine("Inserisci i dettaggli su nuovo evento:");
 
 
@@ -34,3 +34,24 @@ else
 {
     Console.WriteLine("Ok va bene!");
 }
+
+*/
+//Commentato per escluderlo dall'esecuzione
+
+Console.Write("Inserisci il nome del tuo programma Eventi: ");
+ProgrammaEventi programma = new ProgrammaEventi(Console.ReadLine());
+Console.Write("Indica il numero di eventi da insere: ");
+int iterazioniUtente = int.Parse(Console.ReadLine());
+for (int i = 0; i < iterazioniUtente; i++)
+{
+    Console.Write("Inserisci il titolo dell'evento numero " + (i+1) +" :\t");
+    string titolo = Console.ReadLine();
+    Console.Write("Inserisci la data dell'evento numero: " + (i+1) + " :\t");
+    DateTime data = DateTime.Parse(Console.ReadLine());
+    Console.Write("Inserisci il numero di posti dell'evento numero: " + (i+1) + " :\t");
+    int posti = int.Parse(Console.ReadLine());
+    Evento evento = new Evento(titolo, data, posti);
+
+    programma.aggiungiEvento(evento);
+}
+Console.WriteLine(programma.ToString());

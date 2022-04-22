@@ -55,7 +55,7 @@ namespace GestoreEventi
 
         public override string ToString()
         {
-            string str = "\nTitolo: " + titolo;
+            string str = "\nTitolo: " + titolo + "\n";
 
             foreach (Evento evento in eventi)
                 str += evento.stampaDataTitolo();
