@@ -86,13 +86,18 @@ namespace GestoreEventi
         {
             if (data > DateTime.Now)
             {
-                if (postiPrenotati > 0)
-                    postiPrenotati--;
+                if (PostiRichiesti < capienzaMassimaEvento) 
+                {
+                    if (PostiRichiesti < postiPrenotati)
+                        postiPrenotati -= PostiRichiesti;
+                    else
+                        throw new Exception("Posti da disdire richiesti sono più di quelli prenotati");
+                }
                 else
-                    throw new Exception("Non ci sono posti prenotati");
+                    throw new Exception("Hai chiesto più posti di quanto possibile per l'evento");
             }
             else
-                throw new Exception("Non ci sono posti disponibili");
+                throw new Exception("L'evento è già passato");
         }
 
         public int postiDisponibili()
