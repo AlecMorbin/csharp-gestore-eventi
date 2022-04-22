@@ -107,4 +107,4 @@ do
     }
 } while (flag == false);
 
-Console.WriteLine(programma.ToString());
+ProgrammaEventi.stampaLista(programma.getLista());
