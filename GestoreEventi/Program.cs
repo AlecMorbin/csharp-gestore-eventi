@@ -68,5 +68,13 @@ for (int i = 0; i < iterazioniUtente; i++)
     } while (flag==false);
 }
 
-Console.WriteLine(programma.ToString());
 
+Console.WriteLine("Numero di eventi inseriti:\t" + programma.numeroEventi());
+Console.WriteLine("Lista degli eventi Inseriti" + programma.ToString());
+
+Console.Write("Inserisci la data degli eventi che vuoi vedere:");
+DateTime dataDaComparare = DateTime.Parse(Console.ReadLine());
+Console.WriteLine("Lista degli eventi in data " + dataDaComparare.ToString("dd/MM/yyyy"));
+ProgrammaEventi.stampaLista( programma.eventiInData( dataDaComparare ) );
+Console.WriteLine("Cancellazzione di tutti gli eventi registrati...");
+programma.svuotaListaEventi();

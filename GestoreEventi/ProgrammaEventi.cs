@@ -36,9 +36,9 @@ namespace GestoreEventi
             return eventiInData;
         }
 
-        public static void stampaLista(List<Object> lista)
+        public static void stampaLista(List<Evento> lista)
         {
-            foreach (Object item in lista)
+            foreach (Evento item in lista)
                 Console.WriteLine(item.ToString());
         }
 
