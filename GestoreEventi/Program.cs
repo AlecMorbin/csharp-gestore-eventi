@@ -42,16 +42,31 @@ Console.Write("Inserisci il nome del tuo programma Eventi: ");
 ProgrammaEventi programma = new ProgrammaEventi(Console.ReadLine());
 Console.Write("Indica il numero di eventi da insere: ");
 int iterazioniUtente = int.Parse(Console.ReadLine());
+
+
 for (int i = 0; i < iterazioniUtente; i++)
 {
-    Console.Write("Inserisci il titolo dell'evento numero " + (i+1) +" :\t");
-    string titolo = Console.ReadLine();
-    Console.Write("Inserisci la data dell'evento numero: " + (i+1) + " :\t");
-    DateTime data = DateTime.Parse(Console.ReadLine());
-    Console.Write("Inserisci il numero di posti dell'evento numero: " + (i+1) + " :\t");
-    int posti = int.Parse(Console.ReadLine());
-    Evento evento = new Evento(titolo, data, posti);
-
-    programma.aggiungiEvento(evento);
+    bool flag=true;
+    do { 
+        try
+        {
+            Console.Write("Inserisci il titolo dell'evento numero " + (i + 1) + " :\t");
+            string titolo = Console.ReadLine();
+            Console.Write("Inserisci la data dell'evento numero: " + (i + 1) + " :\t");
+            DateTime data = DateTime.Parse(Console.ReadLine());
+            Console.Write("Inserisci il numero di posti dell'evento numero: " + (i + 1) + " :\t");
+            int posti = int.Parse(Console.ReadLine());
+            Evento evento = new Evento(titolo, data, posti);
+            programma.aggiungiEvento(evento);
+            flag = true;
+        }
+        catch (Exception e)
+        { 
+            Console.WriteLine("Hai inserito in modo non corretto la data o la quantità di posti, per favore reinserisci i dati dell'evento");
+            flag = false;
+        }
+    } while (flag==false);
 }
+
 Console.WriteLine(programma.ToString());
+
