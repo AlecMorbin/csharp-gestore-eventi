@@ -8,11 +8,13 @@ namespace GestoreEventi
 {
     internal class Evento
     {
+        //Attributi
         private string titolo;
         private DateTime data;
         private int capienzaMassimaEvento;
         private int postiPrenotati;
-
+        
+        //Costruttore
         public Evento(string titolo, DateTime date, int postiDisponibili)
         {
             this.titolo = titolo;
@@ -21,6 +23,7 @@ namespace GestoreEventi
             postiPrenotati = 0;
         }
 
+        //Metodi
         public void setTitolo(string titolo)
         {
             if (string.IsNullOrEmpty(titolo))
@@ -103,6 +106,11 @@ namespace GestoreEventi
         public int postiDisponibili()
         {
             return capienzaMassimaEvento - postiPrenotati;
+        }
+
+        public string stampaDataTitolo()
+        {
+            return this.getData() + "-" + this.getTitolo() + "\n";
         }
 
         public override string ToString()
