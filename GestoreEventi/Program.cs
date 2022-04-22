@@ -13,5 +13,24 @@ int posti = int.Parse(Console.ReadLine());
 Evento evento = new Evento(nome, data, posti);
 
 Console.Write("\nQuanti posti vuoi prenotare: ");
+
 evento.prenota(int.Parse(Console.ReadLine()));
-Console.WriteLine(evento.ToString());
+
+Console.WriteLine("Posti prenotati: " + evento.getPostiPrenotati());
+Console.WriteLine("Posti Disponibili : " + evento.postiDisponibili());
+
+Console.Write("\nVuoi disdire dei posti?");
+
+string rischiesta = Console.ReadLine();
+
+if (rischiesta.ToLower() == "si")
+{
+    Console.Write("\nQuanti posti vuoi disdire: ");
+    evento.disdici(int.Parse(Console.ReadLine()));
+    Console.WriteLine("Posti prenotati: " + evento.getPostiPrenotati());
+    Console.WriteLine("Posti Disponibili : " + evento.postiDisponibili());
+}
+else
+{
+    Console.WriteLine("Ok va bene!");
+}
