@@ -57,24 +57,42 @@ namespace GestoreEventi
             return postiPrenotati;
         }
 
-        public void prenota()
+        public void prenota(int postiRichiesti)
         {
-            if(capienzaMassimaEvento-postiPrenotati > 0)
+            if (data > DateTime.Now)
             {
-                postiPrenotati++;
+                if (postiDisponibili() > 0)
+                {
+                    if(postiRichiesti < capienzaMassimaEvento)
+                    {
+                        if (postiRichiesti < postiDisponibili())
+                            postiPrenotati += postiRichiesti;
+                        else
+                            throw new Exception("Hai chiesto più posti di quelli disponibili");
+                    }
+                    else 
+                        throw new Exception("Hai chiesto più posti di quanto possibile per l'evento");
+                }
+                else
+                {
+                    throw new Exception("Non ci sono posti disponibili");
+                }
             }
             else
-            {
-                throw new Exception("Non ci sono posti disponibili");
-            }
+                throw new Exception("L'evento è già passato");
         }
 
-        public void disdici()
+        public void disdici(int PostiRichiesti)
         {
-            if (postiPrenotati > 0)
-                postiPrenotati--;
+            if (data > DateTime.Now)
+            {
+                if (postiPrenotati > 0)
+                    postiPrenotati--;
+                else
+                    throw new Exception("Non ci sono posti prenotati");
+            }
             else
-                throw new Exception("Non ci sono posti prenotati");
+                throw new Exception("Non ci sono posti disponibili");
         }
 
         public int postiDisponibili()
@@ -84,7 +102,7 @@ namespace GestoreEventi
 
         public override string ToString()
         {
-            return "Evento: "+"\nTitolo: "+titolo+
+            return "\nEvento: "+"\nTitolo: "+titolo+
                     "\nData: "+data.ToString("dd/MM/yyyy")+
                     "\nCapeinza massima evento: "+capienzaMassimaEvento+
                     "\nPosti prenotati: "+postiPrenotati;
