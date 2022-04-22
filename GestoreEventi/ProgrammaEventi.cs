@@ -20,6 +20,14 @@ namespace GestoreEventi
         }
 
         //Metodi
+        public List<Evento> getLista()
+        {
+            return eventi;
+        }
+        public string getTitolo()
+        {
+            return titolo;
+        }
         public void aggiungiEvento(Evento evento)
         {
             eventi.Add(evento);

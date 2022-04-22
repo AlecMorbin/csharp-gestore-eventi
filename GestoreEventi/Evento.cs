@@ -26,7 +26,7 @@ namespace GestoreEventi
         //Metodi
         public void setTitolo(string titolo)
         {
-            if (string.IsNullOrEmpty(titolo))
+            if (!string.IsNullOrEmpty(titolo))
                 this.titolo = titolo;
             else
                 throw new ArgumentNullException(titolo,"Il titolo inserito è vuoto");

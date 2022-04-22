@@ -43,10 +43,9 @@ ProgrammaEventi programma = new ProgrammaEventi(Console.ReadLine());
 Console.Write("Indica il numero di eventi da insere: ");
 int iterazioniUtente = int.Parse(Console.ReadLine());
 
-
 for (int i = 0; i < iterazioniUtente; i++)
 {
-    bool flag=true;
+    bool CreazioneEventoCorretta;
     do { 
         try
         {
@@ -58,14 +57,14 @@ for (int i = 0; i < iterazioniUtente; i++)
             int posti = int.Parse(Console.ReadLine());
             Evento evento = new Evento(titolo, data, posti);
             programma.aggiungiEvento(evento);
-            flag = true;
+            CreazioneEventoCorretta = true;
         }
         catch (Exception e)
         { 
             Console.WriteLine("Hai inserito in modo non corretto la data o la quantità di posti, per favore reinserisci i dati dell'evento");
-            flag = false;
+            CreazioneEventoCorretta = false;
         }
-    } while (flag==false);
+    } while (CreazioneEventoCorretta == false);
 }
 
 
@@ -76,5 +75,36 @@ Console.Write("Inserisci la data degli eventi che vuoi vedere:");
 DateTime dataDaComparare = DateTime.Parse(Console.ReadLine());
 Console.WriteLine("Lista degli eventi in data " + dataDaComparare.ToString("dd/MM/yyyy"));
 ProgrammaEventi.stampaLista( programma.eventiInData( dataDaComparare ) );
-Console.WriteLine("Cancellazzione di tutti gli eventi registrati...");
-programma.svuotaListaEventi();
+//Console.WriteLine("Cancellazzione di tutti gli eventi registrati...");
+//programma.svuotaListaEventi();
+
+Console.WriteLine("----BONUS-----\n");
+Console.WriteLine("Aggiungiamo anche una conferenza!");
+
+bool flag;
+do
+{
+    try
+    {
+        Console.Write("Inserisci il nome della conferenza: ");
+        string titolo = Console.ReadLine();
+        Console.Write("Inserisci la data della conferenza: ");
+        DateTime data = DateTime.Parse(Console.ReadLine());
+        Console.Write("Inserisci il numero di posti della conferenza: ");
+        int posti = int.Parse(Console.ReadLine());
+        Console.Write("Inserisci il nome del relatore della conferenza: ");
+        string relatore = Console.ReadLine();
+        Console.Write("Inserisci il prezzo del biglietto della conferenza: ");
+        double prezzo = double.Parse(Console.ReadLine());
+        Conferenza evento = new Conferenza(relatore,prezzo,titolo, data, posti);
+        programma.aggiungiEvento(evento);
+        flag = true;
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Hai inserito in modo non corretto la data o la quantità di posti, per favore reinserisci i dati dell'evento");
+        flag = false;
+    }
+} while (flag == false);
+
+Console.WriteLine(programma.ToString());
