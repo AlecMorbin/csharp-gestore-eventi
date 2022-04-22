@@ -17,8 +17,8 @@ namespace GestoreEventi
         //Costruttore
         public Evento(string titolo, DateTime date, int postiDisponibili)
         {
-            this.titolo = titolo;
-            data = date;
+            setTitolo(titolo);
+            setData(date);
             capienzaMassimaEvento = postiDisponibili;
             postiPrenotati = 0;
         }
@@ -29,7 +29,7 @@ namespace GestoreEventi
             if (string.IsNullOrEmpty(titolo))
                 this.titolo = titolo;
             else
-                throw new ArgumentNullException("Il titolo inserito è vuoto");
+                throw new ArgumentNullException(titolo,"Il titolo inserito è vuoto");
         }
           
         public string getTitolo()
